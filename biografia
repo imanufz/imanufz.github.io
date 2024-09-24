@@ -3,79 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biografía de Enyerson</title>
+    <title>Biografia Oficial</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            padding: 20px;
         }
         header {
-            background-color: #4CAF50;
+            background: #007BFF;
             color: white;
             padding: 10px 0;
             text-align: center;
+            border-radius: 8px;
         }
         .container {
-            width: 80%;
+            max-width: 800px;
             margin: auto;
-            overflow: hidden;
-            padding: 20px;
             background: white;
+            padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
             color: #333;
         }
-        .content {
-            margin: 20px 0;
+        h2 {
+            color: #007BFF;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 5px;
         }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #e9ecef;
+            margin: 5px 0;
+            padding: 10px;
             border-radius: 5px;
+            transition: background 0.3s;
         }
-        button:hover {
-            background-color: #45a049;
+        li:hover {
+            background: #d0d0d0;
+        }
+        .contact {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border-left: 5px solid #007BFF;
         }
         footer {
             text-align: center;
-            padding: 10px 0;
-            background-color: #4CAF50;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
         }
     </style>
 </head>
 <body>
-
-<header>
-    <h1>Biografía de Enyerson</h1>
-</header>
-
-<div class="container">
-    <div class="content">
+    <header>
+        <h1>Biografía</h1>
+    </header>
+    <div class="container">
         <h2>Información Personal</h2>
-        <p><strong>Nombre:</strong> Enyerson</p>
+        <p><strong>Nombre Completo:</strong> Enyerson Manuel Fernández Hernández</p>
         <p><strong>Fecha de Nacimiento:</strong> 23 de octubre de 2006</p>
         <p><strong>Edad:</strong> 17 años</p>
-        <p><strong>Signo Zodiacal:</strong> Escorpio</p>
         <p><strong>Lugar de Nacimiento:</strong> La Guaira, Venezuela</p>
+        <p><strong>Signo Zodiacal:</strong> Escorpio</p>
+        <p><strong>Estatura:</strong> 1.72 m</p>
         <p><strong>Relación:</strong> Soltero</p>
         <p><strong>Religión:</strong> Cristiano (Bautizado)</p>
-    </div>
-
-    <div class="content">
-        <h2>Familiares Cercanos</h2>
+        <p><strong>Padre:</strong> Eduardo Fernández (fallecido el 14 de febrero de 2019)</p>
+        
+        <h2>Familia</h2>
         <ul>
             <li>Yelitza Hernandez (Madre)</li>
+            <li>Eduardo Fernández (Padre)</li>
             <li>Crisleydi Hernandez (Hermana)</li>
             <li>Yerlimar Millan (Hermana)</li>
             <li>Yeiner Milllan (Sobrino)</li>
@@ -84,44 +90,29 @@
             <li>Wilcar Marval (Primo hermano)</li>
             <li>Maria Jose Torealba (Hermanastra)</li>
         </ul>
-    </div>
-
-    <div class="content">
+        
         <h2>Educación y Carrera</h2>
         <p><strong>Estudios:</strong> Ingeniería Marítima Mercante en la UMC</p>
-        <p><strong>Cargo:</strong> Próximo Jefe de Máquina</p>
-        <p><strong>Experiencia:</strong> Coordinador de Control y Seguimiento en el MNRR (Movimiento Nacional de Recreadores)</p>
-    </div>
-
-    <div class="content">
-        <h2>Idiomas</h2>
-        <p>Habla con fluidez:</p>
+        <p><strong>Cargo Actual:</strong> Próximo Jefe de Máquina</p>
+        <p><strong>Experiencia Política:</strong> Ex-político con el Ministerio de Defensa de Venezuela y Rusia, Coordinador de Asuntos Especiales Tácticas y Desarrollo.</p>
+        <p><strong>Trabajo Anterior:</strong> Coordinador de Control y Seguimiento en el Movimiento Nacional de Recreadores (MNRR) en Venezuela.</p>
+        
+        <h2>Habilidades</h2>
+        <p><strong>Idiomas:</strong> Español, Inglés, Ruso, Portugués y Catalán (Políglota)</p>
+        
+        <h2>Redes Sociales</h2>
         <ul>
-            <li>Español</li>
-            <li>Inglés</li>
-            <li>Ruso</li>
-            <li>Portugués</li>
-            <li>Catalán</li>
+            <li><strong>TikTok:</strong> <a href="https://www.tiktok.com/@imanufz" target="_blank">@imanufz</a></li>
+            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/soyenyerson1" target="_blank">@soyenyerson1</a></li>
         </ul>
+        
+        <div class="contact">
+            <h2>Contacto</h2>
+            <p><strong>Teléfono:</strong> (+58) 4128208326</p>
+        </div>
     </div>
-
-    <div class="content">
-        <h2>Contacto</h2>
-        <p><strong>Número de Teléfono:</strong> (+58) 412 820 8326</p>
-    </div>
-
-    <button onclick="showAlert()">¡Conóceme más!</button>
-</div>
-
-<footer>
-    <p>&copy; 2024 Enyerson. Todos los derechos reservados.</p>
-</footer>
-
-<script>
-    function showAlert() {
-        alert("¡Hola! Gracias por visitar mi biografía. Sígueme en TikTok (@imanufz) e Instagram (@soyenyerson1) para más contenido.");
-    }
-</script>
-
+    <footer>
+        <p>&copy; 2024 IMANUFZ</p>
+    </footer>
 </body>
 </html>
