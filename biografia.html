@@ -2,361 +2,263 @@
 <html lang="es" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>Enyerson Fernández | Ingeniería Marítima & Estrategia</title>
-    <meta name="description" content="Perfil profesional de Enyerson Manuel Fernández Hernández. Estudiante de Ingeniería Marítima (UMC), Analista Político-Militar y Estratega.">
-    <meta name="keywords" content="Enyerson Fernández, Ingeniería Marítima, UMC, Venezuela, Estrategia Militar, Jefe de Máquinas, Perfil Profesional">
-    <meta name="author" content="Enyerson Fernández">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0a0a0a">
-
-    <meta property="og:type" content="profile">
-    <meta property="og:title" content="Enyerson Fernández | Portafolio Oficial">
-    <meta property="og:description" content="Futuro Ofcial de Máquinas. Especialista en Tácticas y Desarrollo. Conoce mi trayectoria.">
-    <meta property="og:url" content="https://tudominio.com"> <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Enyerson+Fernandez"> <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Person",
-      "name": "Enyerson Manuel Fernández Hernández",
-      "jobTitle": "Estudiante de Ingeniería Marítima",
-      "affiliation": "Universidad Nacional Experimental Marítima del Caribe",
-      "url": "https://imanufz.github.io",
-      "nationality": "Venezuelan",
-      "birthDate": "2006-10-23",
-      "birthPlace": {
-        "@type": "Place",
-        "address": "La Guaira, Venezuela"
-      },
-      "knowsAbout": ["Ingeniería Marítima", "Estrategia Militar", "Política", "Liderazgo"]
-    }
-    </script>
+    <title>Perfil Profesional | Enyerson Fernández</title>
+    <meta name="description" content="Perfil profesional de Enyerson Fernández. Estudiante de Ingeniería Marítima (UMC) con formación en disciplina militar y liderazgo estratégico.">
+    <meta name="theme-color" content="#020c1b">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- 1. CORE VARIABLES & RESET --- */
+        /* --- 1. VARIABLES & RESET PRO --- */
         :root {
-            --bg-deep: #050505;
-            --bg-surface: rgba(255, 255, 255, 0.03);
-            --bg-glass: rgba(20, 20, 20, 0.6);
-            --border-glass: rgba(255, 255, 255, 0.08);
+            --bg-deep: #020c1b;
+            --bg-card: rgba(17, 34, 64, 0.7);
+            --primary: #64ffda; /* Cyan Tech */
+            --primary-dim: rgba(100, 255, 218, 0.1);
+            --text-main: #ccd6f6;
+            --text-heading: #e6f1ff;
+            --text-muted: #8892b0;
+            --accent-gold: #ffd700;
             
-            --primary: #00f2ff; /* Cyan Neón */
-            --primary-dim: rgba(0, 242, 255, 0.1);
-            --secondary: #ffd700; /* Dorado Premium */
-            --text-main: #ffffff;
-            --text-muted: #9ca3af;
-            
-            --font-heading: 'Poppins', sans-serif;
+            --font-heading: 'Outfit', sans-serif;
             --font-body: 'Inter', sans-serif;
             
-            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         html { scroll-behavior: smooth; }
         
         body {
             background-color: var(--bg-deep);
             color: var(--text-main);
             font-family: var(--font-body);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
+            font-size: 16px;
         }
 
-        /* --- 2. BACKGROUND ANIMATION (CANVAS) --- */
+        /* --- 2. EFECTOS DE FONDO --- */
         #canvas-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.4;
+            pointer-events: none;
         }
 
-        /* --- 3. UTILITIES & ANIMATIONS --- */
+        /* --- 3. UI COMPONENTS --- */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-        }
-        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
-
-        h1, h2, h3 { font-family: var(--font-heading); color: #fff; }
-        
-        .section-header {
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-header h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #fff, var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .section-header::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-
-        /* --- 4. GLASS CARDS --- */
-        .glass-card {
-            background: var(--bg-surface);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-dim);
-            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.05);
-        }
-
-        /* --- 5. HERO SECTION --- */
-        header {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            padding: 80px 20px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--primary-dim);
-            border: 1px solid var(--primary);
-            border-radius: 50px;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 15px var(--primary-dim);
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #a5a5a5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-
-        .btn-hero {
-            display: inline-block;
-            padding: 15px 40px;
-            background: #fff;
-            color: #000;
-            font-weight: 700;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s var(--ease);
+        h1, h2, h3, h4 {
             font-family: var(--font-heading);
-        }
-        .btn-hero:hover {
-            background: var(--primary);
-            box-shadow: 0 0 20px var(--primary);
-            transform: scale(1.05);
+            color: var(--text-heading);
+            font-weight: 700;
         }
 
-        /* --- 6. INFO GRID --- */
-        .grid-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .info-row {
+        .section-title {
             display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .info-label { color: var(--text-muted); font-size: 0.95rem; }
-        .info-value { color: #fff; font-weight: 600; text-align: right; }
-        .info-icon { color: var(--primary); margin-right: 8px; width: 20px; }
-
-        /* --- 7. TIMELINE --- */
-        .timeline-wrapper {
-            position: relative;
-            padding-left: 20px;
-        }
-        .timeline-wrapper::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary), transparent);
-        }
-        .timeline-card {
+            align-items: center;
             margin-bottom: 40px;
-            position: relative;
-            padding-left: 30px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            white-space: nowrap;
         }
-        .timeline-dot {
-            position: absolute;
-            left: -24px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            background: var(--bg-deep);
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--primary);
-        }
-        .timeline-card.gold .timeline-dot { border-color: var(--secondary); box-shadow: 0 0 10px var(--secondary); }
-        .role { font-size: 1.2rem; font-weight: 700; color: #fff; display: block; }
-        .place { color: var(--primary); font-size: 0.9rem; font-weight: 500; margin-bottom: 10px; display: block; }
-        .place.gold { color: var(--secondary); }
-        .desc { font-size: 0.95rem; color: var(--text-muted); }
-
-        /* --- 8. SKILLS --- */
-        .skills-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .skill-pill {
-            background: rgba(255,255,255,0.05);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            color: #e0e0e0;
-            border: 1px solid transparent;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .skill-pill i { color: var(--primary); }
-        .skill-pill:hover {
-            background: var(--primary-dim);
-            border-color: var(--primary);
-            color: #fff;
-        }
-
-        /* --- 9. FAMILY GRID --- */
-        .family-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 15px;
-        }
-        .member-card {
-            text-align: center;
-            padding: 20px 10px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .member-name { font-size: 0.95rem; font-weight: 600; display: block; margin-bottom: 5px; }
-        .member-role { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
         
-        .heir { border-color: rgba(255, 215, 0, 0.3); background: linear-gradient(to bottom right, rgba(255, 215, 0, 0.05), transparent); }
-        .heir .member-name { color: var(--secondary); }
-        .deceased .member-name { color: var(--text-muted); text-decoration: line-through; text-decoration-color: var(--primary); text-decoration-thickness: 2px; }
-
-        /* --- 10. SOCIAL BUTTONS (UNIFIED) --- */
-        .social-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 100%; /* Línea flexible */
+            max-width: 300px;
+            height: 1px;
+            background-color: var(--text-muted);
+            margin-left: 20px;
+            opacity: 0.3;
         }
 
-        .btn-social {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            color: #fff;
-            font-size: 1.5rem;
-            transition: all 0.3s var(--ease);
-            border: 1px solid rgba(255,255,255,0.1);
-            text-decoration: none;
+        .section-title span { color: var(--primary); margin-right: 10px; font-weight: 400; font-family: monospace; }
+
+        /* Tarjetas con efecto Glass */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
         }
 
-        .btn-social::before {
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+            border-color: var(--primary-dim);
+        }
+
+        /* --- 4. HERO SECTION --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 100px 0;
+        }
+
+        .hero-intro { 
+            color: var(--primary); 
+            font-family: monospace; 
+            font-size: 1.1rem; 
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero-name {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #e6f1ff, #8892b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-role {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--text-muted);
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        .hero-desc {
+            max-width: 540px;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        /* --- 5. TRAYECTORIA ACADÉMICA (TIMELINE) --- */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--brand-color);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 0;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: var(--text-muted);
+            opacity: 0.2;
         }
 
-        .btn-social i { position: relative; z-index: 1; }
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
 
-        .btn-social:hover { transform: translateY(-5px); border-color: transparent; }
-        .btn-social:hover::before { opacity: 1; }
+        .timeline-marker {
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--bg-deep);
+            border: 2px solid var(--primary);
+            transition: var(--transition);
+        }
 
-        /* --- 11. FOOTER --- */
-        footer {
-            margin-top: 80px;
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-glass);
-            color: var(--text-muted);
+        .timeline-item:hover .timeline-marker { background: var(--primary); }
+
+        .timeline-date {
+            font-family: monospace;
+            color: var(--primary);
             font-size: 0.9rem;
+            margin-bottom: 5px;
+            display: inline-block;
         }
+
+        .institution { color: var(--text-heading); font-size: 1.2rem; font-weight: 600; }
+        .degree { color: var(--text-muted); font-size: 1rem; margin-bottom: 10px; display: block; }
+
+        /* --- 6. HABILIDADES --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .skill-item i { color: var(--primary); }
+
+        /* --- 7. FAMILIA (Minimalista) --- */
+        .family-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .family-member {
+            background: rgba(255,255,255,0.02);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--text-muted);
+        }
+        .family-member.highlight { border-left-color: var(--accent-gold); }
+        .member-role { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); display: block; }
+        .member-name { color: var(--text-heading); font-weight: 500; }
+
+        /* --- 8. FOOTER & SOCIAL --- */
+        .social-links {
+            display: flex;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .social-icon {
+            color: var(--text-main);
+            font-size: 1.4rem;
+            transition: var(--transition);
+        }
+        .social-icon:hover { color: var(--primary); transform: translateY(-3px); }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- UTILITIES --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* Responsive Fixes */
         @media (max-width: 768px) {
-            .hero-badge { font-size: 0.8rem; }
-            .section-header { text-align: left; }
-            .timeline-card { padding-left: 20px; }
+            .section-title::after { width: 100px; }
+            header { padding: 60px 0; }
         }
     </style>
 </head>
@@ -364,254 +266,209 @@
 
     <canvas id="canvas-bg"></canvas>
 
-    <header>
-        <div class="container hero-content fade-in-up">
-            <div class="hero-badge">
-                <i class="fa-solid fa-anchor"></i> Próximo Jefe de Máquinas
-            </div>
-            <h1 class="hero-title">Enyerson Fernández</h1>
-            <p class="hero-subtitle">Ingeniería Marítima | Estrategia Militar | Análisis Político</p>
-            <div>
-                <a href="#contacto" class="btn-hero">Contactar Ahora</a>
-            </div>
-        </div>
-    </header>
-
     <main class="container">
-
-        <section class="fade-in-up" style="margin-bottom: 80px;">
-            <div class="glass-card">
-                <div class="section-header">
-                    <h2>Datos Personales</h2>
+        
+        <header class="fade-in">
+            <div>
+                <span class="hero-intro">Reseña Profesional</span>
+                <h1 class="hero-name">Enyerson Fernández.</h1>
+                <h2 class="hero-role">Ingeniería Marítima & Estrategia.</h2>
+                <p class="hero-desc">
+                    Cadete en formación de la Universidad Marítima del Caribe (UMC). Especialista en liderazgo y operaciones tácticas con antecedentes en formación militar académica. Enfocado en la excelencia técnica y el desarrollo logístico naval.
+                </p>
+                <div class="social-links">
+                    <a href="mailto:contacto@imanufz.gob.ve" class="social-icon" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/imanufz" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 </div>
-                <div class="grid-info">
-                    <div class="info-row"><span class="info-label"><i class="fa-regular fa-id-card info-icon"></i>Nombre</span> <span class="info-value">Enyerson M. Fernández</span></div>
-                    <div class="info-row"><span class="info-label"><i class="fa-solid fa-cake-candles info-icon"></i>Edad</span> <span class="info-value" id="dynamic-age">Calculando...</span></div>
-                    <div class="info-row"><span class="info-label"><i class="fa-solid fa-earth-americas info-icon"></i>Ubicación</span> <span class="info-value">La Guaira, VEN</span></div>
-                    <div class="info-row"><span class="info-label"><i class="fa-solid fa-ruler-vertical info-icon"></i>Estatura</span> <span class="info-value">1.72 m</span></div>
-                    <div class="info-row"><span class="info-label"><i class="fa-solid fa-star info-icon"></i>Signo</span> <span class="info-value">Escorpio</span></div>
-                    <div class="info-row"><span class="info-label"><i class="fa-solid fa-church info-icon"></i>Religión</span> <span class="info-value">Cristiano</span></div>
+            </div>
+        </header>
+
+        <section id="sobre-mi" class="fade-in" style="margin-bottom: 100px;">
+            <h3 class="section-title"><span>01.</span> Perfil</h3>
+            <div class="card">
+                <p style="margin-bottom: 15px;">
+                    Residente de <strong>La Guaira, Venezuela</strong>, Enyerson Manuel Fernández Hernández (2006) se perfila como un futuro Oficial de Máquinas. Su trayectoria se caracteriza por una transición disciplinada desde la educación básica hasta niveles superiores de exigencia militar y marítima.
+                </p>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Ingeniería Marítima</div>
+                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Disciplina Militar</div>
+                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Liderazgo de Equipos</div>
+                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Logística Operativa</div>
+                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Inglés Técnico</div>
+                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Primeros Auxilios</div>
                 </div>
             </div>
         </section>
 
-        <section class="fade-in-up" style="margin-bottom: 80px;">
-            <div class="section-header">
-                <h2>Trayectoria</h2>
-            </div>
+        <section id="formacion" class="fade-in" style="margin-bottom: 100px;">
+            <h3 class="section-title"><span>02.</span> Formación Académica</h3>
             
-            <div class="grid-info" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-                <div>
-                    <h3 style="margin-bottom: 25px; color: var(--secondary);"><i class="fa-solid fa-graduation-cap"></i> Formación Académica</h3>
-                    <div class="timeline-wrapper">
-                        <div class="timeline-card gold">
-                            <div class="timeline-dot"></div>
-                            <span class="role">Ingeniería Marítima</span>
-                            <span class="place gold">Universidad Marítima del Caribe (UMC)</span>
-                            <p class="desc">Especialización en <strong>Instalaciones Marítimas</strong>. Formación de alto nivel para operaciones de buques.</p>
-                        </div>
-                    </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <span class="timeline-date">2023 - Presente</span>
+                    <h4 class="institution">Universidad Nacional Experimental Marítima del Caribe (UMC)</h4>
+                    <span class="degree">Ingeniería Marítima | Mención Instalaciones</span>
+                    <p class="text-muted">Formación superior especializada en operación, mantenimiento y administración de plantas propulsoras y sistemas auxiliares de buques.</p>
                 </div>
 
-                <div>
-                    <h3 style="margin-bottom: 25px; color: var(--primary);"><i class="fa-solid fa-briefcase"></i> Experiencia & Liderazgo</h3>
-                    <div class="timeline-wrapper">
-                        <div class="timeline-card">
-                            <div class="timeline-dot"></div>
-                            <span class="role">Coordinador de Asuntos Especiales</span>
-                            <span class="place">Defensa & Estrategia</span>
-                            <p class="desc">Ex-político y especialista en tácticas de desarrollo y análisis estratégico militar.</p>
-                        </div>
-                        <div class="timeline-card">
-                            <div class="timeline-dot"></div>
-                            <span class="role">Coordinador de Control</span>
-                            <span class="place">Movimiento Nacional de Recreadores</span>
-                            <p class="desc">Supervisión logística y gestión de actividades a escala nacional.</p>
-                        </div>
-                    </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <span class="timeline-date">Periodo Previo</span>
+                    <h4 class="institution">Universidad Militar Bolivariana de Venezuela</h4>
+                    <span class="degree">Formación Básica Militar & Liderazgo</span>
+                    <p class="text-muted">Desarrollo de competencias en disciplina, mando, orden cerrado y táctica básica. Cimientos del carácter estratégico.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <span class="timeline-date">2018 - 2023</span>
+                    <h4 class="institution">U.E.M.O. Cap. Pedro María Ochoa Morales</h4>
+                    <span class="degree">Bachiller en Ciencias</span>
+                    <p class="text-muted">Educación secundaria con énfasis en instrucción premilitar y ciencias básicas.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <span class="timeline-date">2012 - 2018</span>
+                    <h4 class="institution">U.E.I Simon Rodríguez</h4>
+                    <span class="degree">Educación Primaria</span>
                 </div>
             </div>
         </section>
 
-        <section class="fade-in-up" style="margin-bottom: 80px;">
-            <div class="glass-card">
-                <div class="section-header">
-                    <h2>Habilidades & Perfil</h2>
+        <section id="experiencia" class="fade-in" style="margin-bottom: 100px;">
+            <h3 class="section-title"><span>03.</span> Experiencia & Liderazgo</h3>
+            <div class="card">
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: var(--text-heading); font-size: 1.1rem;">Coordinador de Asuntos Especiales</h4>
+                    <span style="font-family: monospace; font-size: 0.9rem; color: var(--primary);">Defensa & Estrategia</span>
+                    <p style="margin-top: 10px; font-size: 0.95rem;">
+                        Análisis de situaciones tácticas y desarrollo de estrategias organizacionales. Gestión de recursos y planificación de objetivos a corto y mediano plazo.
+                    </p>
                 </div>
-                <div class="skills-wrap">
-                    <div class="skill-pill"><i class="fa-solid fa-chess"></i> Estrategia Militar</div>
-                    <div class="skill-pill"><i class="fa-solid fa-users"></i> Liderazgo Político</div>
-                    <div class="skill-pill"><i class="fa-solid fa-anchor"></i> Mecánica Naval</div>
-                    <div class="skill-pill"><i class="fa-solid fa-gavel"></i> Análisis de Conflictos</div>
-                    <div class="skill-pill"><i class="fa-solid fa-person-swimming"></i> Surfista</div>
-                    <div class="skill-pill"><i class="fa-solid fa-hand-fist"></i> Boxeo</div>
+                <div>
+                    <h4 style="color: var(--text-heading); font-size: 1.1rem;">Coordinador de Control</h4>
+                    <span style="font-family: monospace; font-size: 0.9rem; color: var(--primary);">Movimiento Nacional de Recreadores</span>
+                    <p style="margin-top: 10px; font-size: 0.95rem;">
+                        Supervisión logística a escala regional y nacional. Manejo de grupos grandes y resolución de conflictos operativos en tiempo real.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <section class="fade-in-up" style="margin-bottom: 80px;">
-            <div class="section-header">
-                <h2>Núcleo Familiar</h2>
-            </div>
-            <div class="family-grid">
-                <div class="member-card">
-                    <span class="member-name">Yelitza Hernandez</span>
+        <section id="familia" class="fade-in" style="margin-bottom: 100px;">
+            <h3 class="section-title"><span>04.</span> Entorno Personal</h3>
+            <p style="margin-bottom: 20px;">El carácter profesional de Enyerson se fundamenta en sólidos valores familiares.</p>
+            <ul class="family-list">
+                <li class="family-member">
                     <span class="member-role">Madre</span>
-                </div>
-                <div class="member-card deceased">
+                    <span class="member-name">Yelitza Hernández</span>
+                </li>
+                <li class="family-member">
+                    <span class="member-role">Padre (In Memoriam)</span>
                     <span class="member-name">Eduardo Fernández</span>
-                    <span class="member-role">Padre (1975-2019)</span>
-                </div>
-                <div class="member-card heir">
-                    <span class="member-name"><i class="fa-solid fa-crown"></i> Mathias Quesada</span>
-                    <span class="member-role">Sobrino - Heredero</span>
-                </div>
-                <div class="member-card">
-                    <span class="member-name">Crisleydi Hernandez</span>
-                    <span class="member-role">Hermana</span>
-                </div>
-                <div class="member-card">
-                    <span class="member-name">Yerlimar Millan</span>
-                    <span class="member-role">Hermana</span>
-                </div>
-                <div class="member-card">
-                    <span class="member-name">Yeiner Millan</span>
+                </li>
+                <li class="family-member highlight">
                     <span class="member-role">Sobrino</span>
-                </div>
-                <div class="member-card">
-                    <span class="member-name">Sofia Quesada</span>
-                    <span class="member-role">Sobrina</span>
-                </div>
-                <div class="member-card">
-                    <span class="member-name">Wilcar Marval</span>
-                    <span class="member-role">Primo Hermano</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="fade-in-up" style="margin-bottom: 40px;">
-            <div class="glass-card" style="text-align: center;">
-                <h2 style="margin-bottom: 10px;">Conecta Conmigo</h2>
-                <p style="color:var(--text-muted); margin-bottom: 30px;">Disponible para consultas profesionales</p>
-                
-                <div class="social-container">
-                    <a href="https://www.tiktok.com/@imanufz" target="_blank" class="btn-social" style="--brand-color: #000000;" aria-label="TikTok">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
-                    <a href="https://www.instagram.com/imanufz" target="_blank" class="btn-social" style="--brand-color: #E1306C;" aria-label="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="tel:+584128208326" class="btn-social" style="--brand-color: #25D366;" aria-label="Llamar">
-                        <i class="fa-solid fa-phone"></i>
-                    </a>
-                    <a href="mailto:contacto@imanufz.gob.ve" class="btn-social" style="--brand-color: #0072C6;" aria-label="Email">
-                        <i class="fa-regular fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
+                    <span class="member-name">Mathias Quesada</span>
+                </li>
+                <li class="family-member">
+                    <span class="member-role">Hermana</span>
+                    <span class="member-name">Crisleydi Hernández</span>
+                </li>
+                <li class="family-member">
+                    <span class="member-role">Hermana</span>
+                    <span class="member-name">Yerlimar Millán</span>
+                </li>
+            </ul>
         </section>
 
     </main>
 
     <footer>
-        <p>&copy; <span id="year">2024</span> IMANUFZ. Todos los derechos reservados.</p>
-        <p style="opacity: 0.5; font-size: 0.8em; margin-top: 5px;">Designed for Excellence.</p>
+        <div>Diseñado & Desarrollado por IMANUFZ</div>
+        <div style="opacity: 0.6; margin-top: 5px;">&copy; <span id="year"></span> Todos los derechos reservados.</div>
     </footer>
 
     <script>
-        // 1. EDAD PRECISA
-        const calculateAge = () => {
-            const birthDate = new Date('2006-10-23');
-            const today = new Date();
-            let age = today.getFullYear() - birthDate.getFullYear();
-            const monthDiff = today.getMonth() - birthDate.getMonth();
-            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-                age--;
-            }
-            document.getElementById('dynamic-age').textContent = `${age} Años`;
-            document.getElementById('year').textContent = new Date().getFullYear();
+        // 1. UPDATE YEAR
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 2. SCROLL REVEAL (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
         };
 
-        // 2. ANIMACIÓN AL SCROLL (INTERSECTION OBSERVER)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Solo animar una vez
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // 3. CANVAS BACKGROUND (Estilo Constelación/Red Marítima)
+        // 3. CANVAS BACKGROUND (Optimized)
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
+        let width, height;
         let particles = [];
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
         }
-        
+
         class Particle {
             constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.vy = (Math.random() - 0.5) * 0.5;
                 this.size = Math.random() * 2;
+                this.color = 'rgba(100, 255, 218, 0.3)'; // Cyan dim
             }
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                if(this.x < 0) this.x = width;
+                if(this.x > width) this.x = 0;
+                if(this.y < 0) this.y = height;
+                if(this.y > height) this.y = 0;
             }
             draw() {
-                ctx.fillStyle = 'rgba(0, 242, 255, 0.5)';
+                ctx.fillStyle = this.color;
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
                 ctx.fill();
             }
         }
 
         function initParticles() {
             particles = [];
-            const particleCount = Math.min(window.innerWidth / 10, 100); // Menos partículas en móvil
-            for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+            // Menos partículas en móvil para rendimiento
+            const count = window.innerWidth < 768 ? 30 : 70;
+            for(let i=0; i<count; i++) particles.push(new Particle());
         }
 
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p, index) => {
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
                 p.update();
                 p.draw();
-                // Conectar partículas cercanas
-                for (let j = index; j < particles.length; j++) {
-                    const dx = p.x - particles[j].x;
-                    const dy = p.y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 150) {
-                        ctx.strokeStyle = `rgba(0, 242, 255, ${0.1 - distance/1500})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
             });
-            requestAnimationFrame(animateParticles);
+            requestAnimationFrame(animate);
         }
 
-        // Inicialización
-        window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
-        document.addEventListener('DOMContentLoaded', () => {
-            calculateAge();
-            resizeCanvas();
-            initParticles();
-            animateParticles();
-        });
+        window.addEventListener('resize', () => { resize(); initParticles(); });
+        resize();
+        initParticles();
+        animate();
     </script>
 </body>
 </html>
