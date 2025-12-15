@@ -5,36 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>Perfil Profesional | Enyerson Fernández</title>
-    <meta name="description" content="Perfil profesional de Enyerson Fernández. Estudiante de Ingeniería Marítima (UMC) con formación en disciplina militar y liderazgo estratégico.">
-    <meta name="theme-color" content="#020c1b">
+    <title>Enyerson Fernández | Perfil Profesional & Ingeniería Marítima</title>
+    <meta name="description" content="Portafolio profesional de Enyerson Fernández. Cadete de Ingeniería Marítima con formación táctica en la UMBV y especialización técnica en la UMC. Perfil orientado a la Jefatura de Máquinas.">
+    <meta name="keywords" content="Ingeniería Marítima, UMC, UMBV, Oficial de Marina, Estrategia, Venezuela, Enyerson Fernández, Perfil Técnico">
+    <meta name="author" content="Oficina de Comunicaciones EF">
+    <meta name="theme-color" content="#020b14">
 
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Enyerson Fernández - Ingeniería & Estrategia">
+    <meta property="og:description" content="Trayectoria académica y profesional. De la disciplina militar a la excelencia marítima.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Enyerson+Fernandez+Profile">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- 1. VARIABLES & RESET PRO --- */
+        /* --- 1. CONFIGURACIÓN BASE & VARIABLES --- */
         :root {
-            --bg-deep: #020c1b;
-            --bg-card: rgba(17, 34, 64, 0.7);
-            --primary: #64ffda; /* Cyan Tech */
-            --primary-dim: rgba(100, 255, 218, 0.1);
-            --text-main: #ccd6f6;
-            --text-heading: #e6f1ff;
-            --text-muted: #8892b0;
-            --accent-gold: #ffd700;
+            --bg-deep: #020609;
+            --bg-panel: rgba(10, 20, 30, 0.6);
+            --bg-glass: rgba(255, 255, 255, 0.03);
             
-            --font-heading: 'Outfit', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            /* Paleta de Colores: Maritime Cyberpunk */
+            --primary: #00f0ff;      /* Cian Eléctrico */
+            --primary-dark: #008c99;
+            --accent: #ffd700;       /* Dorado Rango */
+            --text-main: #e0f7fa;
+            --text-muted: #8899a6;
+            --border: rgba(0, 240, 255, 0.15);
             
-            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+            
+            --spacing-container: 1200px;
+            --radius: 12px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; font-size: 16px; }
         
         body {
             background-color: var(--bg-deep);
@@ -42,223 +54,261 @@
             font-family: var(--font-body);
             line-height: 1.6;
             overflow-x: hidden;
-            font-size: 16px;
+            position: relative;
         }
 
-        /* --- 2. EFECTOS DE FONDO --- */
+        /* Scrollbar Personalizado */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--primary-dark); border-radius: 4px; }
+
+        /* --- 2. FONDO ANIMADO --- */
         #canvas-bg {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             z-index: -1;
             opacity: 0.4;
-            pointer-events: none;
         }
 
-        /* --- 3. UI COMPONENTS --- */
+        /* --- 3. COMPONENTES UI --- */
         .container {
             width: 100%;
-            max-width: 1100px;
+            max-width: var(--spacing-container);
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 2rem;
         }
 
-        h1, h2, h3, h4 {
-            font-family: var(--font-heading);
-            color: var(--text-heading);
-            font-weight: 700;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            margin-bottom: 40px;
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            white-space: nowrap;
-        }
-        
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 100%; /* Línea flexible */
-            max-width: 300px;
-            height: 1px;
-            background-color: var(--text-muted);
-            margin-left: 20px;
-            opacity: 0.3;
-        }
-
-        .section-title span { color: var(--primary); margin-right: 10px; font-weight: 400; font-family: monospace; }
-
-        /* Tarjetas con efecto Glass */
-        .card {
-            background: var(--bg-card);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: var(--transition);
+        /* Glass Cards Profesional */
+        .tech-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.5rem;
             position: relative;
             overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
-            border-color: var(--primary-dim);
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 2px; height: 0;
+            background: var(--primary);
+            transition: height 0.6s ease;
         }
+
+        .tech-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px -10px rgba(0, 240, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .tech-card:hover::before { height: 100%; }
+
+        /* Tipografía */
+        h1, h2, h3, h4 { font-family: var(--font-head); color: #fff; line-height: 1.2; }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-title span { color: var(--primary); }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #fff, var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .badge-primary { background: rgba(0, 240, 255, 0.1); color: var(--primary); border: 1px solid rgba(0, 240, 255, 0.3); }
+        .badge-gold { background: rgba(255, 215, 0, 0.1); color: var(--accent); border: 1px solid rgba(255, 215, 0, 0.3); }
 
         /* --- 4. HERO SECTION --- */
         header {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            padding: 100px 0;
+            position: relative;
+            padding: 6rem 0;
         }
 
-        .hero-intro { 
-            color: var(--primary); 
-            font-family: monospace; 
-            font-size: 1.1rem; 
-            margin-bottom: 20px;
-            display: block;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .hero-name {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #e6f1ff, #8892b0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin: 1.5rem 0;
+            letter-spacing: -1px;
         }
 
-        .hero-role {
-            font-size: clamp(2rem, 5vw, 4rem);
-            color: var(--text-muted);
-            line-height: 1;
-            margin-bottom: 30px;
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
 
-        .hero-desc {
-            max-width: 540px;
-            font-size: 1.1rem;
-            margin-bottom: 50px;
+        .stat-box {
+            border-left: 2px solid var(--text-muted);
+            padding-left: 1rem;
         }
+        .stat-val { font-family: var(--font-head); font-size: 2rem; color: #fff; display: block; }
+        .stat-lbl { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; }
+
+        .btn-cta {
+            margin-top: 2rem;
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #fff;
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            transition: all 0.3s ease;
+        }
+        .btn-cta:hover { background: var(--primary); transform: scale(1.05); box-shadow: 0 0 20px var(--primary); }
 
         /* --- 5. TRAYECTORIA ACADÉMICA (TIMELINE) --- */
-        .timeline {
+        .timeline-container {
             position: relative;
-            padding-left: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .timeline::before {
-            content: '';
+        
+        .timeline-line {
             position: absolute;
-            left: 0; top: 0; bottom: 0;
+            left: 20px;
+            top: 0; bottom: 0;
             width: 2px;
-            background: var(--text-muted);
-            opacity: 0.2;
+            background: linear-gradient(180deg, var(--primary) 0%, transparent 100%);
         }
 
         .timeline-item {
+            margin-bottom: 3rem;
             position: relative;
-            padding-left: 30px;
-            margin-bottom: 40px;
+            padding-left: 60px;
         }
 
         .timeline-marker {
             position: absolute;
-            left: -6px;
+            left: 11px;
             top: 5px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
+            width: 20px;
+            height: 20px;
             background: var(--bg-deep);
-            border: 2px solid var(--primary);
-            transition: var(--transition);
+            border: 2px solid var(--text-muted);
+            border-radius: 50%;
+            z-index: 2;
+            transition: 0.3s;
         }
 
-        .timeline-item:hover .timeline-marker { background: var(--primary); }
+        .timeline-item:hover .timeline-marker { border-color: var(--primary); background: var(--primary); box-shadow: 0 0 15px var(--primary); }
+        .timeline-item.active .timeline-marker { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 15px var(--accent); }
 
-        .timeline-date {
-            font-family: monospace;
-            color: var(--primary);
+        .edu-date { font-family: var(--font-head); font-size: 0.9rem; color: var(--primary); margin-bottom: 0.5rem; display: block; }
+        .edu-title { font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: 0.25rem; }
+        .edu-school { font-size: 1rem; color: var(--text-muted); font-style: italic; display: block; margin-bottom: 0.75rem; }
+        .edu-desc { font-size: 0.95rem; color: var(--text-muted); }
+
+        /* --- 6. HABILIDADES & DATOS --- */
+        .grid-tech {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-tag {
+            background: rgba(255,255,255,0.05);
+            padding: 8px 16px;
+            border-radius: 4px;
             font-size: 0.9rem;
-            margin-bottom: 5px;
+            color: var(--text-main);
+            border: 1px solid transparent;
             display: inline-block;
+            margin: 0 5px 10px 0;
         }
+        .skill-tag:hover { border-color: var(--primary); color: var(--primary); }
 
-        .institution { color: var(--text-heading); font-size: 1.2rem; font-weight: 600; }
-        .degree { color: var(--text-muted); font-size: 1rem; margin-bottom: 10px; display: block; }
-
-        /* --- 6. HABILIDADES --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-        }
-
-        .skill-item {
+        /* --- 7. FAMILY LEGACY --- */
+        .family-tree {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: monospace;
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
         }
-        .skill-item i { color: var(--primary); }
-
-        /* --- 7. FAMILIA (Minimalista) --- */
-        .family-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .family-member {
-            background: rgba(255,255,255,0.02);
-            padding: 15px;
+        
+        .family-node {
+            background: var(--bg-glass);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 1.5rem;
             border-radius: 8px;
-            border-left: 3px solid var(--text-muted);
+            text-align: center;
+            width: 180px;
+            position: relative;
         }
-        .family-member.highlight { border-left-color: var(--accent-gold); }
-        .member-role { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); display: block; }
-        .member-name { color: var(--text-heading); font-weight: 500; }
+        
+        .family-node.legacy { border-color: rgba(255, 215, 0, 0.3); background: linear-gradient(135deg, rgba(255,215,0,0.05), transparent); }
+        .node-role { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 5px; letter-spacing: 1px; }
+        .node-name { font-weight: 600; color: #fff; }
+        .deceased { text-decoration: line-through; text-decoration-color: var(--primary); opacity: 0.7; }
 
-        /* --- 8. FOOTER & SOCIAL --- */
+        /* --- 8. FOOTER & CONTACT --- */
+        footer {
+            margin-top: 6rem;
+            border-top: 1px solid var(--border);
+            padding: 4rem 0;
+            background: #010406;
+        }
+
         .social-links {
             display: flex;
-            gap: 25px;
-            margin-top: 20px;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
         }
+
         .social-icon {
-            color: var(--text-main);
-            font-size: 1.4rem;
-            transition: var(--transition);
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            transition: 0.3s;
         }
         .social-icon:hover { color: var(--primary); transform: translateY(-3px); }
 
-        footer {
-            padding: 20px;
-            text-align: center;
-            font-family: monospace;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: left; }
+            .section-title { font-size: 2rem; }
         }
-
-        /* --- UTILITIES --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* Responsive Fixes */
-        @media (max-width: 768px) {
-            .section-title::after { width: 100px; }
-            header { padding: 60px 0; }
+        
+        @media (max-width: 480px) {
+            .hero-text h1 { font-size: 2.2rem; }
+            .timeline-item { padding-left: 40px; }
+            .tech-card { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -266,209 +316,370 @@
 
     <canvas id="canvas-bg"></canvas>
 
-    <main class="container">
-        
-        <header class="fade-in">
-            <div>
-                <span class="hero-intro">Reseña Profesional</span>
-                <h1 class="hero-name">Enyerson Fernández.</h1>
-                <h2 class="hero-role">Ingeniería Marítima & Estrategia.</h2>
-                <p class="hero-desc">
-                    Cadete en formación de la Universidad Marítima del Caribe (UMC). Especialista en liderazgo y operaciones tácticas con antecedentes en formación militar académica. Enfocado en la excelencia técnica y el desarrollo logístico naval.
+    <nav style="position: absolute; top: 0; width: 100%; padding: 2rem; z-index: 10; display: flex; justify-content: space-between; align-items: center;">
+        <div style="font-family: var(--font-head); font-weight: 700; font-size: 1.2rem; letter-spacing: 2px;">
+            EF | PROFILE
+        </div>
+        <div style="font-size: 0.9rem; color: var(--primary);">
+            STATUS: <span style="color: #fff;">EN FORMACIÓN</span>
+        </div>
+    </nav>
+
+    <header class="container">
+        <div class="hero-grid">
+            <div class="hero-text gsap-hero">
+                <div class="badge badge-primary mb-4">Ingeniería & Estrategia</div>
+                <h1>Desarrollo de Competencias Tácticas & <span style="color: var(--primary);">Navales</span></h1>
+                <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2rem;">
+                    Perfil profesional de <strong>Enyerson Fernández</strong>. Una trayectoria definida por la transición desde la disciplina militar hacia la excelencia técnica de la Ingeniería Marítima. Enfoque analítico orientado a la Jefatura de Máquinas y la gestión estratégica.
                 </p>
-                <div class="social-links">
-                    <a href="mailto:contacto@imanufz.gob.ve" class="social-icon" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
-                    <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://www.instagram.com/imanufz" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#contacto" class="btn-cta">Iniciar Contacto</a>
+
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <span class="stat-val" id="age-display">--</span>
+                        <span class="stat-lbl">Años de Edad</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val">UMC</span>
+                        <span class="stat-lbl">Base Académica</span>
+                    </div>
                 </div>
             </div>
-        </header>
-
-        <section id="sobre-mi" class="fade-in" style="margin-bottom: 100px;">
-            <h3 class="section-title"><span>01.</span> Perfil</h3>
-            <div class="card">
-                <p style="margin-bottom: 15px;">
-                    Residente de <strong>La Guaira, Venezuela</strong>, Enyerson Manuel Fernández Hernández (2006) se perfila como un futuro Oficial de Máquinas. Su trayectoria se caracteriza por una transición disciplinada desde la educación básica hasta niveles superiores de exigencia militar y marítima.
-                </p>
-                <div class="skills-grid">
-                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Ingeniería Marítima</div>
-                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Disciplina Militar</div>
-                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Liderazgo de Equipos</div>
-                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Logística Operativa</div>
-                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Inglés Técnico</div>
-                    <div class="skill-item"><i class="fa-solid fa-caret-right"></i> Primeros Auxilios</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="formacion" class="fade-in" style="margin-bottom: 100px;">
-            <h3 class="section-title"><span>02.</span> Formación Académica</h3>
             
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <span class="timeline-date">2023 - Presente</span>
-                    <h4 class="institution">Universidad Nacional Experimental Marítima del Caribe (UMC)</h4>
-                    <span class="degree">Ingeniería Marítima | Mención Instalaciones</span>
-                    <p class="text-muted">Formación superior especializada en operación, mantenimiento y administración de plantas propulsoras y sistemas auxiliares de buques.</p>
-                </div>
+            <div class="gsap-graphic" style="position: relative; height: 400px; display: flex; align-items: center; justify-content: center;">
+                <div style="width: 300px; height: 300px; border: 1px solid var(--primary); border-radius: 50%; position: absolute; opacity: 0.2;"></div>
+                <div style="width: 250px; height: 250px; border: 1px dashed var(--text-muted); border-radius: 50%; position: absolute; animation: spin 20s linear infinite;"></div>
+                <i class="fa-solid fa-anchor" style="font-size: 5rem; color: var(--primary); text-shadow: 0 0 30px var(--primary);"></i>
+            </div>
+        </div>
+    </header>
 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <span class="timeline-date">Periodo Previo</span>
-                    <h4 class="institution">Universidad Militar Bolivariana de Venezuela</h4>
-                    <span class="degree">Formación Básica Militar & Liderazgo</span>
-                    <p class="text-muted">Desarrollo de competencias en disciplina, mando, orden cerrado y táctica básica. Cimientos del carácter estratégico.</p>
-                </div>
+    <main class="container">
 
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <span class="timeline-date">2018 - 2023</span>
-                    <h4 class="institution">U.E.M.O. Cap. Pedro María Ochoa Morales</h4>
-                    <span class="degree">Bachiller en Ciencias</span>
-                    <p class="text-muted">Educación secundaria con énfasis en instrucción premilitar y ciencias básicas.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <span class="timeline-date">2012 - 2018</span>
-                    <h4 class="institution">U.E.I Simon Rodríguez</h4>
-                    <span class="degree">Educación Primaria</span>
+        <section style="margin-bottom: 8rem;" class="gsap-fade">
+            <h2 class="section-title">Perfil <span>Biográfico</span></h2>
+            <div class="tech-card">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                    <div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-main);">Visión Profesional</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                            Enyerson Manuel Fernández Hernández se caracteriza por un perfil híbrido poco común: combina la rigidez y el orden adquiridos durante su paso por la <strong>Universidad Militar Bolivariana de Venezuela</strong> con el conocimiento técnico avanzado que desarrolla actualmente en la <strong>Universidad Marítima del Caribe</strong>.
+                        </p>
+                        <p style="color: var(--text-muted);">
+                            Su enfoque no se limita a la mecánica naval; integra nociones de análisis geopolítico y liderazgo estratégico, herramientas clave para la toma de decisiones en entornos de alta presión.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-main);">Datos Biométricos</h3>
+                        <ul style="list-style: none; color: var(--text-muted);">
+                            <li style="margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px;">
+                                <i class="fa-solid fa-location-dot" style="width: 25px; color: var(--primary);"></i> La Guaira, Venezuela
+                            </li>
+                            <li style="margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px;">
+                                <i class="fa-solid fa-ruler" style="width: 25px; color: var(--primary);"></i> 1.72 m / Complexión Atlética
+                            </li>
+                            <li style="margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px;">
+                                <i class="fa-solid fa-fingerprint" style="width: 25px; color: var(--primary);"></i> Escorpio / Liderazgo Nato
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-book-bible" style="width: 25px; color: var(--primary);"></i> Valores Cristianos
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="experiencia" class="fade-in" style="margin-bottom: 100px;">
-            <h3 class="section-title"><span>03.</span> Experiencia & Liderazgo</h3>
-            <div class="card">
-                <div style="margin-bottom: 25px;">
-                    <h4 style="color: var(--text-heading); font-size: 1.1rem;">Coordinador de Asuntos Especiales</h4>
-                    <span style="font-family: monospace; font-size: 0.9rem; color: var(--primary);">Defensa & Estrategia</span>
-                    <p style="margin-top: 10px; font-size: 0.95rem;">
-                        Análisis de situaciones tácticas y desarrollo de estrategias organizacionales. Gestión de recursos y planificación de objetivos a corto y mediano plazo.
-                    </p>
+        <section style="margin-bottom: 8rem;" class="gsap-fade">
+            <h2 class="section-title">Formación <span>Académica</span></h2>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item active">
+                    <div class="timeline-marker"></div>
+                    <span class="edu-date">2023 - Presente</span>
+                    <h3 class="edu-title">Ingeniería Marítima</h3>
+                    <span class="edu-school">Universidad Nacional Experimental Marítima del Caribe (UMC)</span>
+                    <p class="edu-desc">Formación superior especializada en instalaciones marinas, termodinámica y propulsión naval. Preparación técnica para optar al título de Oficial de Marina Mercante.</p>
                 </div>
-                <div>
-                    <h4 style="color: var(--text-heading); font-size: 1.1rem;">Coordinador de Control</h4>
-                    <span style="font-family: monospace; font-size: 0.9rem; color: var(--primary);">Movimiento Nacional de Recreadores</span>
-                    <p style="margin-top: 10px; font-size: 0.95rem;">
-                        Supervisión logística a escala regional y nacional. Manejo de grupos grandes y resolución de conflictos operativos en tiempo real.
-                    </p>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <span class="edu-date">Formación Previa</span>
+                    <h3 class="edu-title">Cadete en Formación Militar</h3>
+                    <span class="edu-school">Universidad Militar Bolivariana de Venezuela (UMBV)</span>
+                    <p class="edu-desc">Periodo formativo fundamental centrado en disciplina, táctica, orden cerrado y ética militar. Bases del liderazgo y resistencia física.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <span class="edu-date">Educación Media General</span>
+                    <h3 class="edu-title">Bachiller en Ciencias</h3>
+                    <span class="edu-school">U.E.M.O. Cap. Pedro María Ochoa Morales</span>
+                    <p class="edu-desc">Culminación de estudios secundarios con enfoque en ciencias básicas, desarrollando capacidades analíticas para la ingeniería.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <span class="edu-date">Educación Básica</span>
+                    <h3 class="edu-title">Educación Primaria</h3>
+                    <span class="edu-school">U.E.I. Simón Rodríguez</span>
+                    <p class="edu-desc">Inicio del ciclo formativo académico.</p>
                 </div>
             </div>
         </section>
 
-        <section id="familia" class="fade-in" style="margin-bottom: 100px;">
-            <h3 class="section-title"><span>04.</span> Entorno Personal</h3>
-            <p style="margin-bottom: 20px;">El carácter profesional de Enyerson se fundamenta en sólidos valores familiares.</p>
-            <ul class="family-list">
-                <li class="family-member">
-                    <span class="member-role">Madre</span>
-                    <span class="member-name">Yelitza Hernández</span>
-                </li>
-                <li class="family-member">
-                    <span class="member-role">Padre (In Memoriam)</span>
-                    <span class="member-name">Eduardo Fernández</span>
-                </li>
-                <li class="family-member highlight">
-                    <span class="member-role">Sobrino</span>
-                    <span class="member-name">Mathias Quesada</span>
-                </li>
-                <li class="family-member">
-                    <span class="member-role">Hermana</span>
-                    <span class="member-name">Crisleydi Hernández</span>
-                </li>
-                <li class="family-member">
-                    <span class="member-role">Hermana</span>
-                    <span class="member-name">Yerlimar Millán</span>
-                </li>
-            </ul>
+        <section style="margin-bottom: 8rem;" class="gsap-fade">
+            <h2 class="section-title">Matriz de <span>Habilidades</span></h2>
+            <div class="grid-tech">
+                <div class="tech-card">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fa-solid fa-brain"></i> Estratégicas</h3>
+                    <div>
+                        <span class="skill-tag">Análisis Político-Militar</span>
+                        <span class="skill-tag">Logística de Operaciones</span>
+                        <span class="skill-tag">Liderazgo de Equipos</span>
+                        <span class="skill-tag">Resolución de Conflictos</span>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <h3 style="color: var(--accent); margin-bottom: 1.5rem;"><i class="fa-solid fa-wrench"></i> Técnicas & Físicas</h3>
+                    <div>
+                        <span class="skill-tag">Mecánica Naval (Básica)</span>
+                        <span class="skill-tag">Supervivencia en el Mar</span>
+                        <span class="skill-tag">Boxeo</span>
+                        <span class="skill-tag">Surf</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-bottom: 8rem;" class="gsap-fade">
+            <h2 class="section-title">Legado <span>Familiar</span></h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 600px;">
+                La estructura familiar representa el pilar fundamental de valores y motivación para el desarrollo profesional de Enyerson Fernández.
+            </p>
+            
+            <div class="family-tree">
+                <div class="family-node deceased">
+                    <span class="node-role">Padre</span>
+                    <span class="node-name">Eduardo Fernández</span>
+                    <small style="display:block; font-size: 0.7rem; margin-top: 5px;">1975-2019</small>
+                </div>
+                <div class="family-node">
+                    <span class="node-role">Madre</span>
+                    <span class="node-name">Yelitza Hernández</span>
+                </div>
+                <div class="family-node legacy">
+                    <i class="fa-solid fa-crown" style="color: var(--accent); font-size: 0.8rem; margin-bottom: 5px;"></i>
+                    <span class="node-role" style="color: var(--accent);">Sobrino / Sucesión</span>
+                    <span class="node-name">Mathias Quesada</span>
+                </div>
+                
+                <div class="family-node">
+                    <span class="node-role">Hermana</span>
+                    <span class="node-name">Crisleydi Hernández</span>
+                </div>
+                <div class="family-node">
+                    <span class="node-role">Hermana</span>
+                    <span class="node-name">Yerlimar Millan</span>
+                </div>
+                <div class="family-node">
+                    <span class="node-role">Sobrino</span>
+                    <span class="node-name">Yeiner Millan</span>
+                </div>
+                <div class="family-node">
+                    <span class="node-role">Sobrina</span>
+                    <span class="node-name">Sofia Quesada</span>
+                </div>
+                 <div class="family-node">
+                    <span class="node-role">Primo Hermano</span>
+                    <span class="node-name">Wilcar Marval</span>
+                </div>
+            </div>
         </section>
 
     </main>
 
-    <footer>
-        <div>Diseñado & Desarrollado por IMANUFZ</div>
-        <div style="opacity: 0.6; margin-top: 5px;">&copy; <span id="year"></span> Todos los derechos reservados.</div>
+    <footer id="contacto">
+        <div class="container" style="text-align: center;">
+            <h2 style="margin-bottom: 1rem;">Canales de Comunicación</h2>
+            <p style="color: var(--text-muted);">Abierto a consultas académicas y profesionales.</p>
+            
+            <div class="social-links">
+                <a href="https://instagram.com/imanufz" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com/@imanufz" class="social-icon" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="mailto:contacto@ejemplo.com" class="social-icon" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="tel:+584128208326" class="social-icon" aria-label="Teléfono"><i class="fa-solid fa-phone"></i></a>
+            </div>
+
+            <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; color: #555;">
+                &copy; <span id="footer-year"></span> Enyerson Fernández. Todos los derechos reservados.<br>
+                Diseñado con Estándares de Ingeniería Web.
+            </div>
+        </div>
     </footer>
 
-    <script>
-        // 1. UPDATE YEAR
-        document.getElementById('year').textContent = new Date().getFullYear();
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-        // 2. SCROLL REVEAL (Intersection Observer)
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
+    <script>
+        // --- 1. CÁLCULO DE EDAD EXACTA ---
+        const calcAge = () => {
+            const birth = new Date('2006-10-23');
+            const now = new Date();
+            let age = now.getFullYear() - birth.getFullYear();
+            const m = now.getMonth() - birth.getMonth();
+            if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) age--;
+            
+            // Animación de conteo numérico
+            let start = 0;
+            const element = document.getElementById('age-display');
+            const duration = 2000;
+            const step = timestamp => {
+                if (!start) start = timestamp;
+                const progress = Math.min((timestamp - start) / duration, 1);
+                element.innerHTML = Math.floor(progress * age);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.innerHTML = age;
+                }
+            };
+            window.requestAnimationFrame(step);
+            
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Solo animar una vez
+        // --- 2. ANIMACIONES GSAP (PROFESIONAL) ---
+        const initAnimations = () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero Fade In
+            gsap.from(".hero-text > *", {
+                y: 50,
+                opacity: 0,
+                duration: 1.2,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
+
+            gsap.from(".gsap-graphic", {
+                scale: 0.8,
+                opacity: 0,
+                duration: 1.5,
+                delay: 0.5,
+                ease: "elastic.out(1, 0.5)"
+            });
+
+            // Secciones al hacer scroll
+            gsap.utils.toArray('.gsap-fade').forEach(section => {
+                gsap.from(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+
+            // Línea de tiempo progresiva
+            gsap.from(".timeline-item", {
+                scrollTrigger: {
+                    trigger: ".timeline-container",
+                    start: "top 75%"
+                },
+                x: -30,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.3,
+                ease: "power2.out"
+            });
+        };
+
+        // --- 3. CANVAS BACKGROUND (EFECTO DE SONAR MARÍTIMO) ---
+        const initCanvas = () => {
+            const cvs = document.getElementById('canvas-bg');
+            const ctx = cvs.getContext('2d');
+            let width, height;
+            let points = [];
+
+            const resize = () => {
+                width = cvs.width = window.innerWidth;
+                height = cvs.height = window.innerHeight;
+            };
+
+            class Point {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.size = Math.random() * 2;
                 }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // 3. CANVAS BACKGROUND (Optimized)
-        const canvas = document.getElementById('canvas-bg');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2;
-                this.color = 'rgba(100, 255, 218, 0.3)'; // Cyan dim
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0) this.x = width;
+                    if (this.x > width) this.x = 0;
+                    if (this.y < 0) this.y = height;
+                    if (this.y > height) this.y = 0;
+                }
+                draw() {
+                    ctx.fillStyle = 'rgba(0, 240, 255, 0.6)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if(this.x < 0) this.x = width;
-                if(this.x > width) this.x = 0;
-                if(this.y < 0) this.y = height;
-                if(this.y > height) this.y = 0;
-            }
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-                ctx.fill();
-            }
-        }
 
-        function initParticles() {
-            particles = [];
-            // Menos partículas en móvil para rendimiento
-            const count = window.innerWidth < 768 ? 30 : 70;
-            for(let i=0; i<count; i++) particles.push(new Particle());
-        }
+            const initPoints = () => {
+                points = [];
+                const cnt = window.innerWidth < 768 ? 40 : 80;
+                for(let i=0; i<cnt; i++) points.push(new Point());
+            };
 
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animate);
-        }
+            const animate = () => {
+                ctx.clearRect(0, 0, width, height);
+                
+                // Dibujar conexiones (Red Neural / Constelación Marítima)
+                for(let i=0; i<points.length; i++) {
+                    points[i].update();
+                    points[i].draw();
+                    for(let j=i; j<points.length; j++) {
+                        const dx = points[i].x - points[j].x;
+                        const dy = points[i].y - points[j].y;
+                        const d = Math.sqrt(dx*dx + dy*dy);
+                        if(d < 150) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(0, 240, 255, ${0.15 - d/1000})`;
+                            ctx.lineWidth = 1;
+                            ctx.moveTo(points[i].x, points[i].y);
+                            ctx.lineTo(points[j].x, points[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            };
 
-        window.addEventListener('resize', () => { resize(); initParticles(); });
-        resize();
-        initParticles();
-        animate();
+            window.addEventListener('resize', () => { resize(); initPoints(); });
+            resize();
+            initPoints();
+            animate();
+        };
+
+        // INICIALIZACIÓN
+        document.addEventListener('DOMContentLoaded', () => {
+            calcAge();
+            initAnimations();
+            initCanvas();
+        });
     </script>
 </body>
 </html>
