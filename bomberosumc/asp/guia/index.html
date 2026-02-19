@@ -1,1 +1,48 @@
-Proximamente
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Versioning System | Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="neuralCanvas"></canvas>
+
+    <header class="main-header glass">
+        <div class="header-content">
+            <img src="https://via.placeholder.com/40/00f2ff/00f2ff?text=D" alt="Logo" class="logo">
+            <h1>Document Versioning System</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="latest-version-widget" class="hero-card glass">
+            <div class="badge">Última actualización</div>
+            <h2 id="hero-title">Cargando...</h2>
+            <p id="hero-desc">Sincronizando con el servidor...</p>
+            <div id="hero-meta" class="meta"></div>
+        </section>
+
+        <section class="version-list-container">
+            <h3>Historial de Versiones</h3>
+            <div id="version-grid" class="version-grid">
+                </div>
+        </section>
+    </main>
+
+    <div id="loader-modal" class="modal-overlay">
+        <div class="modal-content glass">
+            <h3>Preparando descarga segura</h3>
+            <p>Verificando integridad del archivo...</p>
+            <div class="progress-bar-container">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <span id="progress-text">0%</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
