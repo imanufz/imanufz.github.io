@@ -1,0 +1,120 @@
+// 1. Mockup de Base de Datos
+const documentVersions = [
+    { id: 1, fecha: "2026-01-10-09.00AM", versionName: "v1.0.0 - Initial Core", descripcion: "Lanzamiento base del sistema de documentación técnica." },
+    { id: 2, fecha: "2026-02-05-02.30PM", versionName: "v1.1.2 - Security Patch", descripcion: "Optimización de protocolos de encriptación y corrección de bugs menores." },
+    { id: 3, fecha: "2026-02-18-11.45AM", versionName: "v1.2.0 - UI Overhaul", descripcion: "Nueva interfaz con soporte para Glassmorphism y Dark Mode." },
+    { id: 4, fecha: "2026-02-19-12.09PM", versionName: "v2.0.0 - Neural Engine", descripcion: "Integración de motor de búsqueda inteligente y exportación avanzada." }
+];
+
+// 2. Renderizado Dinámico
+const renderVersions = () => {
+    const grid = document.getElementById('version-grid');
+    const heroTitle = document.getElementById('hero-title');
+    const heroDesc = document.getElementById('hero-desc');
+    const heroMeta = document.getElementById('hero-meta');
+
+    // Actualizar Widget Hero (Último elemento)
+    const latest = documentVersions[documentVersions.length - 1];
+    heroTitle.innerText = latest.versionName;
+    heroDesc.innerText = latest.descripcion;
+    heroMeta.innerText = `Publicado: ${latest.fecha}`;
+
+    // Renderizar lista con cascada
+    grid.innerHTML = '';
+    documentVersions.forEach((doc, index) => {
+        const card = document.createElement('div');
+        card.className = 'version-card glass';
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.classList.add('fade-in-cascade');
+        
+        card.innerHTML = `
+            <h4>${doc.versionName}</h4>
+            <p>${doc.descripcion}</p>
+            <small style="display:block; margin-top:15px; color:#666">${doc.fecha}</small>
+        `;
+        
+        card.onclick = () => simulateDownload(doc.fecha);
+        grid.appendChild(card);
+    });
+};
+
+// 3. Simulación de Carga Progresiva
+const simulateDownload = (fecha) => {
+    const modal = document.getElementById('loader-modal');
+    const fill = document.getElementById('progress-fill');
+    const text = document.getElementById('progress-text');
+    
+    modal.style.display = 'flex';
+    let progress = 0;
+    const duration = 2500; // 2.5 segundos
+    const intervalTime = 50;
+    const increment = 100 / (duration / intervalTime);
+
+    const interval = setInterval(() => {
+        progress += increment;
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            setTimeout(() => {
+                modal.style.display = 'none';
+                window.location.href = `/pdf/${fecha}.pdf`;
+            }, 200);
+        }
+        fill.style.width = `${progress}%`;
+        text.innerText = `${Math.round(progress)}%`;
+    }, intervalTime);
+};
+
+// 4. Fondo de Red Neuronal (Canvas)
+const canvas = document.getElementById('neuralCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+const initCanvas = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    particles = [];
+    for(let i = 0; i < 80; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5
+        });
+    }
+};
+
+const drawCanvas = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00f2ff';
+    ctx.strokeStyle = 'rgba(0, 242, 255, 0.1)';
+
+    particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        for(let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            if(dist < 150) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+            }
+        }
+    });
+    requestAnimationFrame(drawCanvas);
+};
+
+window.addEventListener('resize', initCanvas);
+initCanvas();
+drawCanvas();
+renderVersions();
