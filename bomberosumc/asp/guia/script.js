@@ -3,7 +3,7 @@ const documentVersions = [
     { id: 1, fecha: "2026-01-10-09.00AM", versionName: "v1.0.0 - Initial Core", descripcion: "Lanzamiento base del sistema de documentación técnica." },
     { id: 2, fecha: "2026-02-05-02.30PM", versionName: "v1.1.2 - Security Patch", descripcion: "Optimización de protocolos de encriptación y corrección de bugs menores." },
     { id: 3, fecha: "2026-02-18-11.45AM", versionName: "v1.2.0 - UI Overhaul", descripcion: "Nueva interfaz con soporte para Glassmorphism y Dark Mode." },
-    { id: 4, fecha: "2026-02-19-12.09PM", versionName: "v2.0.0 - Neural Engine", descripcion: "Integración de motor de búsqueda inteligente y exportación avanzada." }
+    { id: 4, fecha: "19-02-2026-12.30PM", versionName: "19-02-2026 12.30 PM", descripcion: "MODULOS #2 Agregado." }
 ];
 
 // 2. Renderizado Dinámico
