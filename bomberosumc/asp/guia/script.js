@@ -1,71 +1,145 @@
-// 1. Mockup de Base de Datos
+// 1. Datos Mockup (Fechas mezcladas a propósito para probar el parser)
 const documentVersions = [
     { id: 1, fecha: "2026-01-10-09.00AM", versionName: "v1.0.0 - Initial Core", descripcion: "Lanzamiento base del sistema de documentación técnica." },
     { id: 2, fecha: "2026-02-05-02.30PM", versionName: "v1.1.2 - Security Patch", descripcion: "Optimización de protocolos de encriptación y corrección de bugs menores." },
-    { id: 3, fecha: "2026-02-18-11.45AM", versionName: "v1.2.0 - UI Overhaul", descripcion: "Nueva interfaz con soporte para Glassmorphism y Dark Mode." },
-    { id: 4, fecha: "19-02-2026-12.30PM", versionName: "19-02-2026 12.30 PM", descripcion: "MODULOS #2 Agregado." }
+    { id: 4, fecha: "19-02-2026-12.30PM", versionName: "v1.3.0 - Módulos Base", descripcion: "Módulos de seguridad #2 agregados al core." },
+    { id: 3, fecha: "2026-02-18-11.45AM", versionName: "v1.2.0 - UI Overhaul", descripcion: "Nueva interfaz con soporte para Glassmorphism y Dark Mode." }
 ];
 
-// 2. Renderizado Dinámico
+// --- 2. Lógica de Datos y Normalización ---
+
+/**
+ * Normaliza y convierte un string de fecha mixto a un Objeto Date real
+ * Maneja tanto YYYY-MM-DD como DD-MM-YYYY integrando la hora AM/PM.
+ */
+const parseDateRobust = (dateStr) => {
+    const parts = dateStr.split('-');
+    let year, month, day, timeStr;
+
+    // Detectar si el año está al inicio o al final
+    if (parts[0].length === 4) {
+        [year, month, day, timeStr] = parts;
+    } else {
+        [day, month, year, timeStr] = parts;
+    }
+
+    // Extraer Hora (Ej: 12.30PM)
+    const timeMatch = timeStr.match(/(\d{2})\.(\d{2})(AM|PM)/i);
+    if (!timeMatch) return new Date(); // Fallback seguro
+
+    let hours = parseInt(timeMatch[1], 10);
+    const minutes = parseInt(timeMatch[2], 10);
+    const period = timeMatch[3].toUpperCase();
+
+    if (period === 'PM' && hours < 12) hours += 12;
+    if (period === 'AM' && hours === 12) hours = 0;
+
+    return new Date(year, month - 1, day, hours, minutes);
+};
+
+// Ordenar Array de más reciente a más antiguo
+const sortedVersions = documentVersions.sort((a, b) => {
+    return parseDateRobust(b.fecha) - parseDateRobust(a.fecha);
+});
+
+// --- 3. Renderizado Dinámico ---
 const renderVersions = () => {
     const grid = document.getElementById('version-grid');
-    const heroTitle = document.getElementById('hero-title');
-    const heroDesc = document.getElementById('hero-desc');
-    const heroMeta = document.getElementById('hero-meta');
+    
+    // Configurar Hero Widget (El más reciente)
+    const latest = sortedVersions[0];
+    document.getElementById('hero-title').innerText = latest.versionName;
+    document.getElementById('hero-desc').innerText = latest.descripcion;
+    document.getElementById('hero-meta').innerText = `Publicado: ${latest.fecha.replace(/-/g, ' ')}`;
+    
+    // Asignar evento al Hero
+    const heroWidget = document.getElementById('hero-widget');
+    heroWidget.onclick = () => simulateAdvancedDownload(latest.fecha);
+    heroWidget.onkeydown = (e) => { if(e.key === 'Enter' || e.key === ' ') simulateAdvancedDownload(latest.fecha); };
 
-    // Actualizar Widget Hero (Último elemento)
-    const latest = documentVersions[documentVersions.length - 1];
-    heroTitle.innerText = latest.versionName;
-    heroDesc.innerText = latest.descripcion;
-    heroMeta.innerText = `Publicado: ${latest.fecha}`;
-
-    // Renderizar lista con cascada
+    // Renderizar Historial (Excluyendo el latest si quieres, o incluyéndolo. Aquí incluyo todos para el historial)
     grid.innerHTML = '';
-    documentVersions.forEach((doc, index) => {
+    sortedVersions.forEach((doc, index) => {
         const card = document.createElement('div');
-        card.className = 'version-card glass';
-        card.style.animationDelay = `${index * 0.1}s`;
-        card.classList.add('fade-in-cascade');
+        card.className = 'version-card glass fade-in-cascade';
+        card.style.animationDelay = `${index * 0.15}s`;
+        card.tabIndex = 0; // Accesibilidad
+        card.setAttribute('role', 'button');
         
         card.innerHTML = `
             <h4>${doc.versionName}</h4>
             <p>${doc.descripcion}</p>
-            <small style="display:block; margin-top:15px; color:#666">${doc.fecha}</small>
+            <span class="version-date">${doc.fecha.replace(/-/g, ' ')}</span>
         `;
         
-        card.onclick = () => simulateDownload(doc.fecha);
+        const triggerDownload = () => simulateAdvancedDownload(doc.fecha);
+        card.onclick = triggerDownload;
+        card.onkeydown = (e) => { if(e.key === 'Enter' || e.key === ' ') triggerDownload(); };
+        
         grid.appendChild(card);
     });
 };
 
-// 3. Simulación de Carga Progresiva
-const simulateDownload = (fecha) => {
+// --- 4. Simulación de Descarga Avanzada (Realista) ---
+const simulateAdvancedDownload = (fecha) => {
     const modal = document.getElementById('loader-modal');
     const fill = document.getElementById('progress-fill');
     const text = document.getElementById('progress-text');
+    const statusText = document.getElementById('modal-status');
     
-    modal.style.display = 'flex';
+    modal.classList.add('active');
     let progress = 0;
-    const duration = 2500; // 2.5 segundos
-    const intervalTime = 50;
-    const increment = 100 / (duration / intervalTime);
 
-    const interval = setInterval(() => {
-        progress += increment;
+    // Textos dinámicos para simular procesos
+    const statusMessages = [
+        "Negociando handshake seguro...",
+        "Verificando integridad del archivo...",
+        "Desencriptando paquetes...",
+        "Preparando volcado a disco..."
+    ];
+
+    const simulateProgress = () => {
         if (progress >= 100) {
-            progress = 100;
-            clearInterval(interval);
+            fill.style.width = '100%';
+            text.innerText = '100%';
+            statusText.innerText = "¡Descarga completada!";
+            
             setTimeout(() => {
-                modal.style.display = 'none';
-                window.location.href = `/pdf/${fecha}.pdf`;
-            }, 200);
+                modal.classList.remove('active');
+                // Simular redirección
+                console.log(`Descargando: /pdf/${fecha}.pdf`);
+                // window.location.href = `/pdf/${fecha}.pdf`; 
+                
+                // Resetear modal para futuras descargas
+                setTimeout(() => {
+                    fill.style.width = '0%';
+                    text.innerText = '0%';
+                }, 300);
+            }, 800);
+            return;
         }
+
+        // Simular fluctuaciones de red (ráfagas y pausas)
+        const isPause = Math.random() > 0.85; // 15% prob de "pausa de red"
+        const increment = isPause ? 0 : Math.random() * 15 + 2; // Salto entre 2% y 17%
+        const delay = isPause ? Math.random() * 800 + 400 : Math.random() * 200 + 50; // Pausa larga vs salto rápido
+
+        progress = Math.min(progress + increment, 100);
+        
+        // Cambiar texto dependiendo del progreso
+        const stage = Math.floor((progress / 100) * statusMessages.length);
+        statusText.innerText = statusMessages[Math.min(stage, statusMessages.length - 1)];
+
         fill.style.width = `${progress}%`;
         text.innerText = `${Math.round(progress)}%`;
-    }, intervalTime);
+
+        setTimeout(simulateProgress, delay);
+    };
+
+    simulateProgress(); // Iniciar bucle asíncrono
 };
 
-// 4. Fondo de Red Neuronal (Canvas)
+// --- 5. Background Neural Dinámico y Elegante ---
 const canvas = document.getElementById('neuralCanvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
@@ -74,39 +148,49 @@ const initCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     particles = [];
-    for(let i = 0; i < 80; i++) {
+    
+    // Menos partículas para un look más limpio (dependiente de pantalla)
+    const particleCount = Math.floor(window.innerWidth / 25); 
+    
+    for(let i = 0; i < particleCount; i++) {
         particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 0.5,
-            vy: (Math.random() - 0.5) * 0.5
+            vx: (Math.random() - 0.5) * 0.15, // Movimiento ultra lento
+            vy: (Math.random() - 0.5) * 0.15
         });
     }
 };
 
 const drawCanvas = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#00f2ff';
-    ctx.strokeStyle = 'rgba(0, 242, 255, 0.1)';
-
+    
     particles.forEach((p, i) => {
         p.x += p.vx;
         p.y += p.vy;
 
+        // Rebote sutil
         if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
+        // Dibujar Nodo
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 229, 255, 0.4)';
         ctx.fill();
 
+        // Conexiones Dinámicas
         for(let j = i + 1; j < particles.length; j++) {
             const p2 = particles[j];
             const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-            if(dist < 150) {
+            
+            if(dist < 180) { // Radio de conexión más amplio
+                const opacity = 1 - (dist / 180); // Fading natural
                 ctx.beginPath();
                 ctx.moveTo(p.x, p.y);
                 ctx.lineTo(p2.x, p2.y);
+                ctx.strokeStyle = `rgba(0, 229, 255, ${opacity * 0.15})`;
+                ctx.lineWidth = 0.8;
                 ctx.stroke();
             }
         }
@@ -115,6 +199,8 @@ const drawCanvas = () => {
 };
 
 window.addEventListener('resize', initCanvas);
+
+// Inicialización
 initCanvas();
 drawCanvas();
 renderVersions();
