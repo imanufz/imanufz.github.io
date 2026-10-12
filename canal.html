@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEARCH CHANNELS</title>
+<style>
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    background: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+#I {
+    width: 80%;
+    margin: 2vh 0;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid gray;
+    background: transparent;
+    color: white;
+    font-weight: bold;
+}
+#I::placeholder { color: #aaa; }
+#I:focus { outline: none; }
+#Lista {
+    display: none;
+    max-height: 30vh;
+    overflow-y: auto;
+    margin: 10px 0;
+    padding: 0;
+    list-style: none;
+    border-radius: 15px;
+    border: 1px solid gray;
+    width: 80%;
+}
+#Lista li {
+    padding: 8px;
+    cursor: pointer;
+}
+#Lista li:hover {
+    background: #222;
+}
+#F {
+    width: 100%;
+    height: 50vh;
+    margin-top: 10px;
+    background: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbvSgZ1IQaHpZX_Fr8wUHyG2m9eR_7UUmmpGv2fup39h_8Cvj_jRFkuGvh5y40K-fqUii-WKcxH7r0WiAKUOr_iTzdCNcxA04vtvpIz6AhYMRrc1amAhzERzcP5NA9rP2EK-25dDLHMwIqGAxQrz2Z1pQLz8NYkXvelI5w6NUl2tS5wnl8E5wuA5VqXQ/s867/image_search_1756842507622.png);
+    background-size: cover;
+}
+#T {
+    color: #4f9;
+    opacity: .7;
+    font-weight: bold;
+}
+a {
+    color: #f00;
+    font-weight: bold;
+    text-decoration: none;
+  &:hover {
+      color: blue;
+  }
+}
+#FULL {    
+    width: 20%;
+    color: #000;
+    opacity: 0.5;
+    padding: 1px;
+    font-size: 10px; 
+    background: gray;
+    font-weight: bold;       
+    border-radius: 50px;
+  &:hover {
+      color: #fff;
+      background: #004;
+  }
+}
+
+@media (min-width: 500px) {
+    #F {
+        width: 50%;
+        height: 80vh;
+        max-width: 700px;
+    }
+    #FULL {
+        width: 20vh;
+    }
+}
+</style>
+</head>
+<body>
+<form onsubmit="event.preventDefault(); Check()">
+  <input id="I" placeholder="Buscar..." type="text"/>
+</form>
+  <ul id="Lista"></ul>
+  <iframe id="F" src="" sandbox="allow-scripts allow-same-origin" frameborder="0" allowfullscreen="true" allow="encrypted-media"></iframe>
+
+      <h5 id="T"></h5>
+
+<button id="FULL">Pantalla Completa</button>
+<br/><br/>
+<script type='text/javascript' src='https://embed.saohgdasregions.fun/embed2.js'></script>
+<script>
+    var canales = [
+"TUDN","GOL PERU","TNT SPORTS","ESPN PREMIUM LAT","ESPN PREMIUM ARGENTINA","TYC SPORTS",
+"FOX SPORTS","FOX SPORTS 2","FOX SPORTS 3","FOX DEPORTES","ESPN LAT","ESPN ARGENTINA",
+"ESPN COLOMBIA","ESPN 2","ESPN 3","ESPN 4","ESPN 5","ESPN 6","ESPN 7","DIRECTV SPORTS",
+"DIRECTV SPORTS 2","DIRECTV SPORTS PLUS","FOX SPORTS MX","FOX SPORTS 2 MX","FOX SPORTS 3 MX",
+"ESPN MX","ESPN 2 MX","ESPN 3 MX","ESPN 4 MX","ESPN 5 MX","TVC DEPORTES","LIGA 1","LIGA 1 MAX",
+"FOX SPORTS PREMIUM","MOVISTAR DEPORTES PE","DAZN F1","DAZN LA LIGA","M. LIGA DE CAMPEONES",
+"WIN SPORTS","WIN SPORTS PLUS","BEIN SPORTS XTRA","MOVISTAR LA LIGA","NBA","MOVISTAR DEPORTES ES",
+"AZTECA DEPORTES","TNT SPORTS CHILE","MLB NETWORK","SKY SPORTS MX","SKY SPORTS BUNDESLIGA",
+"SKY SPORTS F1","AZTECA 7","CANAL 5","LATINA","AMERICA TV","SPACE","WARNER CHANNEL","TNT",
+"STAR CHANNEL","CINEMAX","CINECANAL","TELEFE","EL TRECE","DISTRITO COMEDIA","TELEMUNDO MIAMI",
+"HISTORY","HISTORY 2","PASIONES","AZTECA UNO","GALAVISION","TLNOVELAS","LAS ESTRELLAS","SYFY USA",
+"CARACOL","ATV","UNIVISION","UNICABLE","FX","GOLDEN PLUS","GOLDEN EDGE","GOLDEN PREMIERE",
+"GOLDEN PREMIERE 2","TNT SERIES","SONY","AXN","UNIVERSAL TV","STUDIO UNIVERSAL","MULTIPREMIER",
+"AMC","PARAMOUNT CHANNEL","DPELICULA","MTV","COMEDY CENTRAL","NAT GEO","ANIMAL PLANET",
+"DISCOVERY CHANNEL","DISCOVERY HYH","ID INVESTIGATION","DISCOVERY A&E","DISCOVERY TLC",
+"DISCOVERY THEATER","EVERYTHING","EL GOURMET","DISNEY JUNIOR","NICK","NICK JR",
+"CARTOON NETWORK","CARTOONITO","TOONCAST","DISCOVERY KIDS","TELEMUNDO PUERTO RICO","WILLAX TV",
+"GLOBAL TV PERU","RCN","ANTENA 3","TV PUBLICA","DISNEY CHANNEL","TNT NOVELAS","UNIVERSAL CINEMA",
+"FM HOT KIDS"
+];
+
+   <!-- Insertar la lista original en el HTML -->
+var Lista = document.getElementById('Lista');
+canales.forEach(function(canal) {
+    var li = document.createElement('li');
+    li.className = 'Data';
+    li.textContent = canal; 
+    Lista.appendChild(li);
+});
+
+var input = document.getElementById('I');
+var iframe = document.getElementById('F');
+var items = Lista.querySelectorAll('.Data');
+
+
+     function Check() {
+       var canal = input.value.replace(/\s+/g, '').trim().toLowerCase();
+    if (canal) {
+        iframe.src = "https://embed.saohgdasregions.fun/embed2/" + canal + ".php";  
+    T.textContent = input.value.toUpperCase();  
+  }
+       input.value = '';
+};
+
+
+  <!-- Filtrado en tiempo real -->
+input.addEventListener('keyup', function(e) {
+    var query = input.value.toLowerCase().trim();
+    var hasResults = false;
+
+       if (query === '') {
+  Lista.style.display = 'none';
+        return;
+    }
+
+    items.forEach(function(item) {
+        var text = item.textContent.toLowerCase();
+  if (text.includes(query)) {
+    item.style.display = 'block';
+          hasResults = true;
+      } else {
+   item.style.display = 'none';
+        }
+});
+
+    Lista.style.display = hasResults ? 'block' : 'none';
+
+    if (e.key === 'Enter') {
+           Check();
+  Lista.style.display = 'none';
+    }
+});
+
+     <!-- CLIC EN UN CANAL -->
+Lista.onclick = (e) => {
+    if (e.target.classList.contains('Data')) {
+  <!-- Reemplazar espacios por nada antes de colocar en el input -->
+        var canalSinEspacios = e.target.textContent.replace(/\s+/g, '').toLowerCase();
+   input.value = canalSinEspacios;
+  Lista.style.display = 'none';
+        Check();
+          T.textContent = e.target.textContent;
+    }
+}; 
+</script>
+
+    <!-- DETECTAR FULL SCREEN -->
+<script>
+document.addEventListener('fullscreenchange', function() {
+  if (document.fullscreenElement) {
+    <!-- Si estamos en pantalla completa, bloquear orientación horizontal -->
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('landscape');
+    }
+  } else {
+    <!-- Si salimos de pantalla completa, volver a orientación vertical -->
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock('portrait');
+    }
+  }
+});
+</script>    
+      <!-- FULL SCREEN -->
+<script>
+var iframe = document.querySelector('iframe');
+
+      FULL.onclick = () => {
+  if (iframe.requestFullscreen) {
+    iframe.requestFullscreen();
+  } else if (iframe.mozRequestFullScreen) { // Firefox
+    iframe.mozRequestFullScreen();
+  } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+    iframe.webkitRequestFullscreen();
+  } else if (iframe.msRequestFullscreen) { // IE/Edge
+    iframe.msRequestFullscreen();
+  }
+};
+</script>
+</body>
+</html>
